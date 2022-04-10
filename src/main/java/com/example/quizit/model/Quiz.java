@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Quiz {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String question;
@@ -23,10 +23,10 @@ public class Quiz {
     private String answer_d;
     private String answer_e;
     private String answer_f;
-    @Column(nullable = false)
+    @Column()
     private String technology;
 
-    @OneToOne(optional = false, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "player_id")
     private Player player;
 

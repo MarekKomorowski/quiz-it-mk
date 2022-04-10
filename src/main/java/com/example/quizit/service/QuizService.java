@@ -93,8 +93,8 @@ public class QuizService {
     }
 
     public void saveQuizzes(Map<String, Quiz> quiz){
-        Collection<Quiz> values = quiz.values();
-        quizRepository.saveAll(values);
+        List<Quiz> list = new ArrayList<>(quiz.values());
+        quizRepository.saveAll(list);
     }
 
     private String mapCorrectAnswersToOneVariable(QuizResponse quizResponse) {
