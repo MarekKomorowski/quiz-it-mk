@@ -1,6 +1,6 @@
 CREATE TABLE players
 (
-    id        BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id        BIGINT  PRIMARY KEY,
     name      VARCHAR(50)  NOT NULL,
     last_name VARCHAR(100) NOT NULL
 
@@ -8,7 +8,7 @@ CREATE TABLE players
 
 CREATE TABLE quiz
 (
-    id             BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id             BIGINT  PRIMARY KEY,
     question       VARCHAR(255) NOT NULL,
     player_answer  VARCHAR(255) NOT NULL,
     correct_answer VARCHAR(255) NOT NULL,
