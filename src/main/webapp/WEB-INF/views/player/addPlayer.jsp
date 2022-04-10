@@ -1,0 +1,54 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<%@include file="../dynamic/head.jspf" %>
+
+<body>
+<!-- Responsive navbar-->
+<%@include file="../dynamic/navbar.jspf" %>
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="<c:url value="/resources/assets/quiz.jpg"/>"
+                                          alt="..."/>
+                </figure>
+                <!-- Post content-->
+                <form method="post" action='<c:url value="/addPlayer"/>'>
+
+                    <section class="mb-5">
+
+                        <div class="form-group">
+                            <label class="col-form-label mt-4" for="inputDefault1">name</label>
+                            <input type="text" class="form-control" placeholder="name" id="inputDefault1" name="name" required="required">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label mt-4" for="inputDefault2">last name</label>
+                            <input type="text" class="form-control" placeholder="last name" id="inputDefault2" name="lastName" required="required">
+                        </div>
+                    </section>
+                    <button type="submit" class="btn btn-primary">Add Player</button>
+
+                </form>
+            </article>
+            <!-- Comments section-->
+
+        </div>
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Categories widget-->
+            <%@include file="../dynamic/navigator.jspf" %>
+
+            <!-- Footer-->
+            <%@include file="../dynamic/footer.jspf" %>
+</body>
+
+</html>
