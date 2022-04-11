@@ -39,6 +39,8 @@
                                 <option value="sql">SQL</option>
                                 <option value="docker">Docker</option>
                                 <option value="linux">Linux</option>
+                                <option value="bash">Bash</option>
+                                <option value="devops">DevOps</option>
                         </select>
                     </div>
 
