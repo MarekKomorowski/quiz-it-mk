@@ -49,7 +49,7 @@ public class QuizService {
 
     }
 
-    public List<QuizDTO> getQuizDTO() {
+    public List<QuizDTO> mapToQuizDTO() {
         List<QuizDTO> playersAndStats = new ArrayList<>();
         List<Player> allPlayers = quizRepository.findAllPlayers();
         for (Player player : allPlayers) {

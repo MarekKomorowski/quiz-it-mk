@@ -41,7 +41,7 @@ public class PlayerController {
     @GetMapping({"/editPlayer/{id}"})
     public String viewPLayers(Model model, @PathVariable("id") Long id){
         Optional<Player> playerById = playerService.findPlayerById(id);
-        model.addAttribute("player", playerById.get());
+        model.addAttribute("player", playerById.orElseThrow());
         return ("player/editPlayer");
     }
 

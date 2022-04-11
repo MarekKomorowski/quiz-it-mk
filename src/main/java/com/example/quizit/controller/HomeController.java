@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping(value = {"/", "/index"})
     public String getIndex(Model model){
-        List<QuizDTO> quizDTO = quizService.getQuizDTO();
+        List<QuizDTO> quizDTO = quizService.mapToQuizDTO();
         model.addAttribute("players", quizDTO);
         return "index";
     }

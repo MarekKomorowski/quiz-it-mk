@@ -1,11 +1,13 @@
 package com.example.quizit.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity(name = "quiz")
 @Data
+@NoArgsConstructor
 public class Quiz {
 
     @Id
@@ -23,7 +25,6 @@ public class Quiz {
     private String answer_d;
     private String answer_e;
     private String answer_f;
-    @Column()
     private String technology;
 
     @OneToOne
