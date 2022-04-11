@@ -44,6 +44,11 @@
                                         <button type="button" class="btn btn-primary btn-sm">edit</button>
                                     </a>
                                 </td>
+                                <td>
+                                    <a href="<c:url value="/deletePlayer/${player.id}"/>">
+                                        <button type="button" class="btn btn-danger btn-sm">delete</button>
+                                    </a>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
