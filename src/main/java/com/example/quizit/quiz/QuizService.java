@@ -1,10 +1,7 @@
-package com.example.quizit.service;
+package com.example.quizit.quiz;
 
-import com.example.quizit.model.Player;
-import com.example.quizit.model.Quiz;
-import com.example.quizit.model.QuizDTO;
-import com.example.quizit.repository.QuizRepository;
-import com.example.quizit.response.QuizResponse;
+import com.example.quizit.player.Player;
+import com.example.quizit.quiz.response.QuizResponse;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +23,7 @@ public class QuizService {
     private final ObjectMapper objectMapper;
     private final QuizRepository quizRepository;
 
-    public HashMap<String, Quiz> getQuiz(String technology, String difficulty, Player player, short numberOfQuestions) {
+    HashMap<String, Quiz> getQuiz(String technology, String difficulty, Player player, short numberOfQuestions) {
         List<QuizResponse> quizResponses = new ArrayList<>();
         HttpClient httpClient = HttpClient.newHttpClient();
         String format = String.format("https://quizapi.io/api/v1/questions?apiKey=TVRhdZBe4SyNm2UU2l0axR4QBMidodl7rKNJO29H&category=%s&difficulty=%s&limit=%s", technology, difficulty, numberOfQuestions);
@@ -49,7 +46,7 @@ public class QuizService {
 
     }
 
-    public List<QuizDTO> mapToQuizDTO() {
+    List<QuizDTO> mapToQuizDTO() {
         List<QuizDTO> playersAndStats = new ArrayList<>();
         List<Player> allPlayers = quizRepository.findAllPlayers();
         for (Player player : allPlayers) {
@@ -65,11 +62,11 @@ public class QuizService {
         return playersAndStats;
     }
 
-    public List<Player> getAllPlayers() {
+    List<Player> getAllPlayers() {
         return quizRepository.findAllPlayers();
     }
 
-    public Player findPlayerById(Long id) {
+    Player findPlayerById(Long id) {
         return quizRepository.findPlayerById(id);
     }
 
@@ -92,7 +89,7 @@ public class QuizService {
         return quizMap;
     }
 
-    public void saveQuizzes(Map<String, Quiz> quiz){
+    void saveQuizzes(Map<String, Quiz> quiz){
         List<Quiz> list = new ArrayList<>(quiz.values());
         quizRepository.saveAll(list);
     }

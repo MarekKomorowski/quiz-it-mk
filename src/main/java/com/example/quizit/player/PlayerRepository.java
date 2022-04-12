@@ -1,6 +1,5 @@
-package com.example.quizit.repository;
+package com.example.quizit.player;
 
-import com.example.quizit.model.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {

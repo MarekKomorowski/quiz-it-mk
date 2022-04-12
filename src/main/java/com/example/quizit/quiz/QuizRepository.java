@@ -1,7 +1,6 @@
-package com.example.quizit.repository;
+package com.example.quizit.quiz;
 
-import com.example.quizit.model.Player;
-import com.example.quizit.model.Quiz;
+import com.example.quizit.player.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

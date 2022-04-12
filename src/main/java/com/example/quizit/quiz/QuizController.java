@@ -1,17 +1,14 @@
-package com.example.quizit.controller;
+package com.example.quizit.quiz;
 
-import com.example.quizit.model.Player;
-import com.example.quizit.model.Quiz;
-import com.example.quizit.response.AnswerResponse;
-import com.example.quizit.response.QuizResponseParam;
-import com.example.quizit.service.QuizService;
+import com.example.quizit.player.Player;
+import com.example.quizit.quiz.response.AnswerResponse;
+import com.example.quizit.quiz.response.QuizResponseParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
@@ -24,7 +21,7 @@ public class QuizController {
 
 
     @PostMapping("/quiz")
-    public String getQuestion(Model model, @ModelAttribute QuizResponseParam quizResponseParam) {
+    String getQuestion(Model model, @ModelAttribute QuizResponseParam quizResponseParam) {
         Player player = quizService.findPlayerById(quizResponseParam.getPlayerId());
         quiz = quizService.getQuiz(quizResponseParam.getTechnology(), quizResponseParam.getDifficulty(), player, quizResponseParam.getNumberOfQuestions());
         model.addAttribute("player", player);
@@ -35,7 +32,7 @@ public class QuizController {
     }
 
     @PostMapping("/result")
-    public String getQuestion(Model model, @ModelAttribute() AnswerResponse answerResponse) {
+    String getQuestion(Model model, @ModelAttribute() AnswerResponse answerResponse) {
         for(String key:quiz.keySet()){
             quiz.get(key).setPlayerAnswer(answerResponse.getAnswers().get(key));
         }
@@ -45,10 +42,17 @@ public class QuizController {
     }
 
     @GetMapping("/chooseQuiz")
-    public String chooseQuiz(Model model) {
+    String chooseQuiz(Model model) {
         List<Player> allPlayers = quizService.getAllPlayers();
         model.addAttribute("players", allPlayers);
         return "chooseQuiz";
 
+    }
+
+    @GetMapping(value = {"/", "/index"})
+    String getIndex(Model model){
+        List<QuizDTO> quizDTO = quizService.mapToQuizDTO();
+        model.addAttribute("players", quizDTO);
+        return "index";
     }
 }

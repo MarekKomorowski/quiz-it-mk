@@ -1,4 +1,4 @@
-package com.example.quizit.response;
+package com.example.quizit.quiz.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

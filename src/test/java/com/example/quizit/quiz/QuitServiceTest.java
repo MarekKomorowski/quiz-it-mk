@@ -1,8 +1,9 @@
-package com.example.quizit.service;
+package com.example.quizit.quiz;
 
-import com.example.quizit.model.Player;
-import com.example.quizit.model.Quiz;
-import com.example.quizit.repository.QuizRepository;
+import com.example.quizit.player.Player;
+import com.example.quizit.quiz.Quiz;
+import com.example.quizit.quiz.QuizRepository;
+import com.example.quizit.quiz.QuizService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
