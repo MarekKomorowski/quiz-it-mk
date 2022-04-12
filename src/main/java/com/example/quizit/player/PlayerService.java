@@ -1,7 +1,5 @@
-package com.example.quizit.service;
+package com.example.quizit.player;
 
-import com.example.quizit.model.Player;
-import com.example.quizit.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +12,19 @@ public class PlayerService {
 
     private final PlayerRepository playerRepository;
 
-    public Player save(Player player){
+    Player save(Player player){
         return playerRepository.save(player);
     }
 
-    public List<Player> findAllPlayers(){
+    List<Player> findAllPlayers(){
         return playerRepository.findAll();
     }
 
-    public Optional<Player> findPlayerById(Long id){
+    Optional<Player> findPlayerById(Long id){
         return playerRepository.findById(id);
     }
 
-    public void deletePlayerById(Long id){
+    void deletePlayerById(Long id){
         playerRepository.deleteById(id);
     }
 }

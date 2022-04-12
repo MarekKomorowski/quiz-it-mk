@@ -1,4 +1,4 @@
-package com.example.quizit.model;
+package com.example.quizit.player;
 
 import lombok.Data;
 

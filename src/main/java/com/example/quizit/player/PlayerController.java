@@ -1,7 +1,5 @@
-package com.example.quizit.controller;
+package com.example.quizit.player;
 
-import com.example.quizit.model.Player;
-import com.example.quizit.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,39 +19,39 @@ public class PlayerController {
     private final PlayerService playerService;
 
     @GetMapping(value = {"/addPlayer"})
-    public String viewAddPLayer(){
+    String viewAddPLayer(){
         return "/player/addPlayer";
     }
 
     @PostMapping({"/addPlayer"})
-    public RedirectView addPLayer(@ModelAttribute Player player){
+    RedirectView addPLayer(@ModelAttribute Player player){
         playerService.save(player);
         return new RedirectView("/players");
     }
 
     @GetMapping({"/players"})
-    public String viewPLayers(Model model){
+    String viewPLayers(Model model){
         List<Player> allPlayers = playerService.findAllPlayers();
         model.addAttribute("players", allPlayers);
         return ("player/players");
     }
 
     @GetMapping({"/editPlayer/{id}"})
-    public String viewPLayers(Model model, @PathVariable("id") Long id){
+    String viewPLayers(Model model, @PathVariable("id") Long id){
         Optional<Player> playerById = playerService.findPlayerById(id);
         model.addAttribute("player", playerById.orElseThrow());
         return ("player/editPlayer");
     }
 
     @PostMapping({"/editPlayer/{id}"})
-    public RedirectView addEditPLayer(@ModelAttribute Player player, @PathVariable Long id){
+    RedirectView addEditPLayer(@ModelAttribute Player player, @PathVariable Long id){
         player.setId(id);
         playerService.save(player);
         return new RedirectView("/players");
     }
 
     @GetMapping({"/deletePlayer/{id}"})
-    public RedirectView deletePLayer(@PathVariable Long id){
+    RedirectView deletePLayer(@PathVariable Long id){
         playerService.deletePlayerById(id);
         return new RedirectView("/players");
     }

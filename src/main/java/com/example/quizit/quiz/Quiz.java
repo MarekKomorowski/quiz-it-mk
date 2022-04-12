@@ -1,5 +1,6 @@
-package com.example.quizit.model;
+package com.example.quizit.quiz;
 
+import com.example.quizit.player.Player;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

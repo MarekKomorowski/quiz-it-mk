@@ -1,4 +1,4 @@
-package com.example.quizit.response;
+package com.example.quizit.quiz.response;
 
 import lombok.Data;
 
