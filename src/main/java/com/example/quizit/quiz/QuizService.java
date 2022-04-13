@@ -99,7 +99,7 @@ public class QuizService {
         int easy = quizRepository.findAllByPlayerIdAndDifficulty(player.getId(), "Easy").size();
         int medium = quizRepository.findAllByPlayerIdAndDifficulty(player.getId(), "Medium").size();
         int hard = quizRepository.findAllByPlayerIdAndDifficulty(player.getId(), "Hard").size();
-        return easy + (medium*2) + (hard*3);
+        return (easy*10) + (medium*20) + (hard*30);
     }
     private String mapCorrectAnswersToOneVariable(QuizResponse quizResponse) {
         String correctAnswer = null;
