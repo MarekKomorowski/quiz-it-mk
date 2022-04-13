@@ -54,10 +54,10 @@ public class QuizService {
             int allAnswers = quizRepository.countAllAnswersBy(player.getId());
             int percentOfCorrectAnswers = Math.round(100f * allCorrectAnswers / allAnswers);
             int allPlayerAnswers = quizRepository.countAllAnswersBy(player.getId());
-            playersAndStats.add(new QuizDTO(player.getName(), player.getLastName(), percentOfCorrectAnswers, allPlayerAnswers));
+            playersAndStats.add(new QuizDTO(player.getName(), player.getLastName(), percentOfCorrectAnswers, allPlayerAnswers, calculatePoints(player)));
         }
         playersAndStats = playersAndStats.stream()
-                .sorted(Comparator.comparingDouble(QuizDTO::getPercentOfCorrectAnswers).reversed())
+                .sorted(Comparator.comparingInt(QuizDTO::getPoints).reversed())
                 .collect(Collectors.toList());
         return playersAndStats;
     }
@@ -82,6 +82,7 @@ public class QuizService {
             quiz.setAnswer_e(quizResponse.getAnswers().getAnswer_e());
             quiz.setAnswer_f(quizResponse.getAnswers().getAnswer_f());
             quiz.setCorrectAnswer(mapCorrectAnswersToOneVariable(quizResponse));
+            quiz.setDifficulty(quizResponse.getDifficulty());
             int indexOf = quizResponses.indexOf(quizResponse);
             String question = "q".concat(String.valueOf(indexOf));
             quizMap.put(question, quiz);
@@ -94,6 +95,12 @@ public class QuizService {
         quizRepository.saveAll(list);
     }
 
+    private int calculatePoints(Player player){
+        int easy = quizRepository.findAllByPlayerIdAndDifficulty(player.getId(), "Easy").size();
+        int medium = quizRepository.findAllByPlayerIdAndDifficulty(player.getId(), "Medium").size();
+        int hard = quizRepository.findAllByPlayerIdAndDifficulty(player.getId(), "Hard").size();
+        return easy + (medium*2) + (hard*3);
+    }
     private String mapCorrectAnswersToOneVariable(QuizResponse quizResponse) {
         String correctAnswer = null;
         if (quizResponse.getCorrectAnswers().getAnswer_a()) {

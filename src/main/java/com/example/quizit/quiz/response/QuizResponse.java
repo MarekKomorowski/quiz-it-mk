@@ -13,6 +13,7 @@ public class QuizResponse {
     private Answers answers;
     @JsonProperty("correct_answers")
     private CorrectAnswers correctAnswers;
+    private String difficulty;
 
     @Data
     public static class Answers {

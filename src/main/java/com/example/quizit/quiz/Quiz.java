@@ -27,6 +27,7 @@ public class Quiz {
     private String answer_e;
     private String answer_f;
     private String technology;
+    private String difficulty;
 
     @OneToOne
     @JoinColumn(name = "player_id")

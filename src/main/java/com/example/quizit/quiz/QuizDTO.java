@@ -11,4 +11,5 @@ public class QuizDTO {
     private String lastName;
     private int percentOfCorrectAnswers;
     private int allPlayerAnswers;
+    private int points;
 }
