@@ -30,6 +30,7 @@
     <th scope="col">Last Name</th>
     <th scope="col">Win ratio</th>
     <th scope="col">All answers</th>
+    <th scope="col">Points</th>
 </tr>
 </thead>
 <tbody>
@@ -39,8 +40,9 @@
     <tr class="table-info">
     <td>${players.name}</td>
     <td>${players.lastName}</td>
-    <td>${players.percentOfCorrectAnswers}</td>
+    <td>${players.percentOfCorrectAnswers}%</td>
     <td>${players.allPlayerAnswers}</td>
+    <td>${players.points}</td>
     </tr>
 </c:forEach>
     </tbody>

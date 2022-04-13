@@ -21,5 +21,8 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
     @Query(value = "FROM players WHERE id = ?1")
     Player findPlayerById(Long id);
+
+    @Query("FROM quiz WHERE player.id = ?1 AND correctAnswer = playerAnswer AND difficulty = ?2")
+     List<Quiz> findAllByPlayerIdAndDifficulty(Long id, String difficulty);
 }
 
