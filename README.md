@@ -15,3 +15,8 @@ Wait few second, Heroku can be in sleep mode.
 
 Spring Boot, Heroku, JSP, Bootstrap
 
+## Roadmap
+
+- achivments section
+
+- answers history for each players
