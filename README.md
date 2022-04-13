@@ -19,4 +19,4 @@ Spring Boot, Heroku, JSP, Bootstrap
 
 - achivments section
 
-- answers history for each players
+- answers history for each player
