@@ -128,7 +128,7 @@
                         </fieldset>
                     </c:forEach>
 
-                    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Submit</button>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 40px">Submit</button>
                 </form>
                 </section>
             </article>

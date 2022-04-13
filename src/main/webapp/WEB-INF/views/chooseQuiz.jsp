@@ -70,7 +70,7 @@
                     </div>
                 </section>
 
-                <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Play</button>
+                <button type="submit" class="btn btn-primary" style="margin-bottom: 40px">Play</button>
                 </form>
             </article>
             <!-- Comments section-->
