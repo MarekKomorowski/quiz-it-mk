@@ -1,6 +1,6 @@
 # Quiz IT
 
-Spring boot application for friends whos want to check theirs knowladge.
+Spring boot application for friends whos want to check their knowledge.
 I used to external API with questions database.  
 
 
